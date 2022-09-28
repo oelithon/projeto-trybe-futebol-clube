@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import VerifyPassword from '../utils/verifyPassword';
 import ServiceLogin from '../service/ServiceLogin';
 
 const fieldsFilled = { message: 'All fields must be filled' };
@@ -18,9 +19,13 @@ export default class validateLogin {
   }
 
   static async password(req: Request, res: Response, next: NextFunction) {
-    const { password } = req.body;
+    const { email, password } = req.body;
 
     if (!password) return res.status(400).json(fieldsFilled);
+
+    const passValid = await VerifyPassword.passDecrypt(email, password);
+
+    if (!passValid) return res.status(400).json(fieldsFilled);
 
     next();
   }
