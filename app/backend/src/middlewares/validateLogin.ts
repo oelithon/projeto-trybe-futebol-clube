@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 const fieldsFilled = { message: 'All fields must be filled' };
 
 export default class validateLogin {
-  static async validateEmail(req: Request, res: Response, next: NextFunction) {
+  static async email(req: Request, res: Response, next: NextFunction) {
     const { email } = req.body;
 
     if (!email) return res.status(400).json(fieldsFilled);
@@ -11,7 +11,7 @@ export default class validateLogin {
     next();
   }
 
-  static async validatePassword(req: Request, res: Response, next: NextFunction) {
+  static async password(req: Request, res: Response, next: NextFunction) {
     const { password } = req.body;
 
     if (!password) return res.status(400).json(fieldsFilled);
