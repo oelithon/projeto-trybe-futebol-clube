@@ -10,7 +10,10 @@ export default class RouteLogin {
 
     this.router
       .route('/login')
-      .post(validateLogin.validateEmail)
+      .post(
+        validateLogin.validateEmail,
+        validateLogin.validatePassword,
+      )
       .get((_req: Request, res: Response) => {
         res.status(200).json({ message: 'ok' });
       });
