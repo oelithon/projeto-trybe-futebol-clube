@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { Request, Response } from 'express';
+import validateLogin from '../middlewares/validateLogin';
 
 export default class RouteLogin {
   public router: express.Router;
@@ -9,6 +10,7 @@ export default class RouteLogin {
 
     this.router
       .route('/login')
+      .post(validateLogin.validateEmail)
       .get((_req: Request, res: Response) => {
         res.status(200).json({ message: 'ok' });
       });
