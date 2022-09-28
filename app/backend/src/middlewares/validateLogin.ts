@@ -10,4 +10,12 @@ export default class validateLogin {
 
     next();
   }
+
+  static async validatePassword(req: Request, res: Response, next: NextFunction) {
+    const { password } = req.body;
+
+    if (!password) return res.status(400).json(fieldsFilled);
+
+    next();
+  }
 }
