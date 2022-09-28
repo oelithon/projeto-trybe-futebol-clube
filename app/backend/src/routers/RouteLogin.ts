@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { Request, Response } from 'express';
+import ControllerLogin from '../controllers/ControllerLogin';
 import validateLogin from '../middlewares/validateLogin';
 
 export default class RouteLogin {
@@ -13,6 +14,7 @@ export default class RouteLogin {
       .post(
         validateLogin.email,
         validateLogin.password,
+        ControllerLogin.successLogin,
       )
       .get((_req: Request, res: Response) => {
         res.status(200).json({ message: 'ok' });
