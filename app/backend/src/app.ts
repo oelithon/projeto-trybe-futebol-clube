@@ -1,4 +1,7 @@
 import * as express from 'express';
+import * as cors from 'cors';
+
+import RouteLogin from './routers/RouteLogin';
 
 class App {
   public app: express.Express;
@@ -22,6 +25,14 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
+    this.app.use(cors());
+
+    const path = '/';
+
+    this.app.use(
+      path,
+      new RouteLogin().router,
+    );
   }
 
   public start(PORT: string | number): void {
