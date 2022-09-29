@@ -73,7 +73,7 @@ describe('Teste endpoint /login', () => {
       expect(chaiHttpResponse.body.message).to.equal('All fields must be filled')
     });
 
-    it('deveria falhar o campo password inválido', async () => {
+    it('deveria falhar com password inválido', async () => {
       chaiHttpResponse = await chai.request(app)
         .post('/login')
         .send(userLoginPassInvalidMock);
