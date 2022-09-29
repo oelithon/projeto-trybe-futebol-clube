@@ -10,6 +10,10 @@ export default class RouteLogin {
     this.router = express.Router();
 
     this.router
+      .route('/login/validate')
+      .get(validateLogin.verifyToken);
+
+    this.router
       .route('/login')
       .post(
         validateLogin.email,
