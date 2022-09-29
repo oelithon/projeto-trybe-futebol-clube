@@ -8,7 +8,7 @@ export default class UserToken {
   static async createToken(email: string) {
     const { id, role, username } = await ServiceLogin.findUser(email) as IUser;
 
-    const token = jwt.sign({ id, role, username }, secret, { algorithm: 'HS256' });
+    const token = jwt.sign({ id, role, username }, secret, { expiresIn: '1d', algorithm: 'HS256' });
 
     return token;
   }
