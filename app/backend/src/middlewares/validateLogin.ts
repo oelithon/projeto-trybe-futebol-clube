@@ -4,6 +4,7 @@ import ServiceLogin from '../service/ServiceLogin';
 
 const fieldsFilled = { message: 'All fields must be filled' };
 const failEmailOrPass = { message: 'Incorrect email or password' };
+const notFound = { message: 'Token not found' };
 
 export default class validateLogin {
   static async email(req: Request, res: Response, next: NextFunction) {
@@ -26,6 +27,14 @@ export default class validateLogin {
     const passValid = await VerifyPassword.passDecrypt(email, password);
 
     if (!passValid) return res.status(400).json(fieldsFilled);
+
+    next();
+  }
+
+  static async verifyToken(req: Request, res: Response, next: NextFunction) {
+    const { authorization } = req.headers;
+
+    if (!authorization) return res.status(401).json(notFound);
 
     next();
   }
