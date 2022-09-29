@@ -22,9 +22,6 @@ export default class RouteLogin {
         validateLogin.email,
         validateLogin.password,
         ControllerLogin.successLogin,
-      )
-      .get((_req: Request, res: Response) => {
-        res.status(200).json({ message: 'ok' });
-      });
+      );
   }
 }
