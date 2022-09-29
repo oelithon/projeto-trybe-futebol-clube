@@ -4,7 +4,7 @@ import ServiceLogin from '../service/ServiceLogin';
 
 const secret = process.env.JWT_SECRET || 'JWT_SECRET';
 
-export default class Token {
+export default class UserToken {
   static async createToken(email: string) {
     const { id, role, username } = await ServiceLogin.findUser(email) as IUser;
 
@@ -14,7 +14,11 @@ export default class Token {
   }
 
   static async verifyToken(token: string) {
-    const decoded = jwt.verify(token, secret);
-    return decoded;
+    try {
+      const decoded = jwt.verify(token, secret);
+      return decoded;
+    } catch (error) {
+      return undefined;
+    }
   }
 }
