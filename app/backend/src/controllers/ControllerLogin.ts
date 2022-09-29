@@ -16,6 +16,6 @@ export default class ControllerLogin {
 
     const { role } = await UserToken.verifyToken(authorization as string) as JwtPayload;
 
-    res.status(200).json({ role });
+    return res.status(200).json({ role });
   }
 }
