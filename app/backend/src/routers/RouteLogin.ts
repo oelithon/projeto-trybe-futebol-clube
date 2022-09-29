@@ -1,5 +1,4 @@
 import * as express from 'express';
-import { Request, Response } from 'express';
 import ControllerLogin from '../controllers/ControllerLogin';
 import validateLogin from '../middlewares/validateLogin';
 
