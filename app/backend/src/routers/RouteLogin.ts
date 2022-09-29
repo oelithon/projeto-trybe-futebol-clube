@@ -11,7 +11,10 @@ export default class RouteLogin {
 
     this.router
       .route('/login/validate')
-      .get(validateLogin.verifyToken);
+      .get(
+        validateLogin.verifyToken,
+        ControllerLogin.roleUser,
+      );
 
     this.router
       .route('/login')
