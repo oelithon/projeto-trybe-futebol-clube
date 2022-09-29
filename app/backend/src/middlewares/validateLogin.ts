@@ -28,7 +28,7 @@ export default class validateLogin {
 
     const passValid = await VerifyPassword.passDecrypt(email, password);
 
-    if (!passValid) return res.status(400).json(fieldsFilled);
+    if (!passValid) return res.status(401).json(failEmailOrPass);
 
     next();
   }
