@@ -41,4 +41,13 @@ export default class ServiceMatch {
     });
     return created;
   }
+
+  static async finishMatch(id: number) {
+    const finishMatch = await ModelMatch.update(
+      { inProgress: false },
+      { where: { id } },
+    );
+
+    return finishMatch;
+  }
 }

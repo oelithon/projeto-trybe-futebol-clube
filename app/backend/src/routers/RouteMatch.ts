@@ -18,5 +18,9 @@ export default class RouteTeams {
         validateLogin.verifyToken,
         ControllerMatch.createMatch,
       );
+
+    this.router
+      .route('/matches/:id/finish')
+      .patch(ControllerMatch.finishMatch);
   }
 }
