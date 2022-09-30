@@ -1,5 +1,6 @@
 import * as express from 'express';
 
+import validateLogin from '../middlewares/validateLogin';
 import ControllerTeams from '../controllers/ControllerTeams';
 
 export default class RouteTeams {
@@ -10,6 +11,9 @@ export default class RouteTeams {
 
     this.router
       .route('/teams')
-      .get(ControllerTeams.getAllTeams);
+      .get(
+        validateLogin.verifyToken,
+        ControllerTeams.getAllTeams,
+      );
   }
 }
