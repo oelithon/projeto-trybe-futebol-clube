@@ -7,4 +7,12 @@ export default class ControllerTeams {
 
     return res.status(200).json(teams);
   }
+
+  static async getOneTeam(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const team = await ServiceTeams.getOneTeam(Number(id));
+
+    return res.status(200).json(team);
+  }
 }
