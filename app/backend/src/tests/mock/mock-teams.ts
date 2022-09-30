@@ -12,3 +12,8 @@ export const teamsMock = [
     "teamName": "Botafogo"
   },
 ]
+
+export const oneTeamMock = {
+  "id": 2,
+  "teamName": "Bahia"
+}
