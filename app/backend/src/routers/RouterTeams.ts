@@ -10,6 +10,13 @@ export default class RouteTeams {
     this.router = express.Router();
 
     this.router
+      .route('/teams/:id')
+      .get(
+        validateLogin.verifyToken,
+        ControllerTeams.getOneTeam,
+      );
+
+    this.router
       .route('/teams')
       .get(
         validateLogin.verifyToken,
