@@ -6,4 +6,10 @@ export default class ServiceTeams {
 
     return teams;
   }
+
+  static async getOneTeam(id: number) {
+    const team = ModelTeam.findByPk(id);
+
+    return team;
+  }
 }
