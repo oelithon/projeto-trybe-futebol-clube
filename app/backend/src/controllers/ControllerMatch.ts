@@ -23,4 +23,13 @@ export default class ControllerMatch {
       return res.status(200).json({ message: 'Finished' });
     }
   }
+
+  static async updateMatch(req: Request, res: Response) {
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const { id } = req.params;
+
+    await ServiceMatch.updateMatch(Number(id), homeTeamGoals, awayTeamGoals);
+
+    return res.json({ message: 'updated' });
+  }
 }

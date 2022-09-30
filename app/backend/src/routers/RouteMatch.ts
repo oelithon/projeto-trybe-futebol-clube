@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-import validateLogin from '../middlewares/validateLogin';
+import ValidateMatch from '../middlewares/validateMatch';
 import ControllerMatch from '../controllers/ControllerMatch';
 
 export default class RouteTeams {
@@ -15,8 +15,14 @@ export default class RouteTeams {
         ControllerMatch.getAllMatches,
       )
       .post(
-        validateLogin.verifyToken,
+        ValidateMatch.validateTokenMatch,
         ControllerMatch.createMatch,
+      );
+
+    this.router
+      .route('/matches/:id')
+      .patch(
+        ControllerMatch.updateMatch,
       );
 
     this.router

@@ -50,4 +50,13 @@ export default class ServiceMatch {
 
     return finishMatch;
   }
+
+  static async updateMatch(id: number, homeTeamGoals: string, awayTeamGoals: string) {
+    const matchUpdated = await ModelMatch.update(
+      { homeTeamGoals, awayTeamGoals },
+      { where: { id } },
+    );
+
+    return matchUpdated;
+  }
 }
