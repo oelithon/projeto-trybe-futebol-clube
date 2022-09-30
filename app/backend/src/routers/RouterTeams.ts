@@ -1,5 +1,6 @@
 import * as express from 'express';
-import { Request, Response } from 'express';
+
+import ControllerTeams from '../controllers/ControllerTeams';
 
 export default class RouteTeams {
   public router: express.Router;
@@ -9,8 +10,6 @@ export default class RouteTeams {
 
     this.router
       .route('/teams')
-      .get((_req: Request, res: Response) => {
-        res.status(200).json({ message: 'OK' });
-      });
+      .get(ControllerTeams.getAllTeams);
   }
 }
