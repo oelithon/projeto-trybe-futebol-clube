@@ -1,4 +1,4 @@
-import { IMatches } from '../interfaces/InterfaceUser';
+import { IMatches } from '../interfaces/interfaceMatch';
 import ModelMatch from '../database/models/ModelMatch';
 import ModelTeam from '../database/models/ModelTeam';
 
