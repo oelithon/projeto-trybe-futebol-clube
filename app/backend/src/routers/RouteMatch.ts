@@ -1,5 +1,6 @@
 import * as express from 'express';
 
+import validateLogin from '../middlewares/validateLogin';
 import ControllerMatch from '../controllers/ControllerMatch';
 
 export default class RouteTeams {
@@ -12,6 +13,10 @@ export default class RouteTeams {
       .route('/matches')
       .get(
         ControllerMatch.getAllMatches,
+      )
+      .post(
+        validateLogin.verifyToken,
+        ControllerMatch.createMatch,
       );
   }
 }

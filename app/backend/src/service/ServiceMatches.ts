@@ -1,3 +1,4 @@
+import { IMatches } from '../interfaces/InterfaceUser';
 import ModelMatch from '../database/models/ModelMatch';
 import ModelTeam from '../database/models/ModelTeam';
 
@@ -26,5 +27,18 @@ export default class ServiceMatch {
       include: includeModel,
     });
     return matchesFiltered;
+  }
+
+  static async createMatch(body: IMatches) {
+    const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals } = body;
+
+    const created = await ModelMatch.create({
+      homeTeam,
+      homeTeamGoals,
+      awayTeam,
+      awayTeamGoals,
+      inProgress: true,
+    });
+    return created;
   }
 }

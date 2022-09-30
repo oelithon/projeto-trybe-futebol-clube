@@ -8,4 +8,10 @@ export default class ControllerMatch {
 
     return res.status(200).json(matches);
   }
+
+  static async createMatch(req: Request, res: Response) {
+    const createMatch = await ServiceMatch.createMatch(req.body);
+
+    return res.status(201).json(createMatch);
+  }
 }
