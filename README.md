@@ -107,10 +107,4 @@ Na sua máquina você deve ter:
 
 </details>
 
-# Sobre os Requisitos
-
-Esse projeto é composto de 4 seções principais:
-1. Users e Login
-2. Times
-3. Partidas
-4. Placar
+# Sobre as Rotas
